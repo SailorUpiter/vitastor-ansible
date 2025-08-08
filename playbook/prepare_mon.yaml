@@ -1,0 +1,19 @@
+---
+- name: Install vitastor
+  hosts: vitastor-mon
+  become: true
+  tasks:
+    - name: Initalizate ETCD service
+      ansible.builtin.shell: /usr/lib/vitastor/mon/make-etcd >> /home/ubadmin/vitastor.txt
+
+    - name: Enable service vitastor-etcd and started
+      ansible.builtin.systemd_service:
+        name: vitastor-etcd
+        state: started
+        enabled: true
+
+    - name: Enable service vitastor-mon and started
+      ansible.builtin.systemd_service:
+        name: vitastor-mon
+        state: started
+        enabled: true

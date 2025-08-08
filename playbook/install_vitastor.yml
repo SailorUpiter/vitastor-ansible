@@ -1,0 +1,32 @@
+---
+- name: Install vitastor
+  hosts: vitastor-osd
+  become: true
+  tasks:
+    - name: Add repo key
+      ansible.builtin.apt_key:
+        url: https://vitastor.io/debian/pubkey.gpg
+        state: present
+    - name: Add vitastor repository into sources list
+      ansible.builtin.apt_repository:
+        repo: deb https://vitastor.io/debian jammy main
+        state: present
+
+    - name: Install packages 
+      ansible.builtin.apt:
+        pkg:
+        - vitastor
+        - lp-solve
+        - etcd
+        - qemu-system-x86
+        #- linux-image-amd64 #From old Linux Kernel
+        update_cache: yes
+
+    - name: Copy file with owner and permissions
+      ansible.builtin.copy:
+        src: /config/vitastor.conf
+        dest: /etc/vitastor/vitastor.conf
+        owner: root
+        group: root
+        mode: '0644'
+

@@ -1,0 +1,7 @@
+---
+- name: Install vitastor
+  hosts: vitastor-osd
+  become: true
+  tasks:
+    - name: Prepare OSD
+      ansible.builtin.shell: vitastor-disk prepare /dev/sdb /dev/sdc # List the devices in the format /dev/sdXXX
