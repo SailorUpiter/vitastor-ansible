@@ -1,7 +1,9 @@
 ---
 - name: Install vitastor
-  hosts: vitastor-osd
+  hosts: vitastor-mon
   become: true
+  vars_files:
+    - /home/ubadmin/vitastor/vars/main
   tasks:
     - name: Add repo key
       ansible.builtin.apt_key:
@@ -22,11 +24,12 @@
         #- linux-image-amd64 #From old Linux Kernel
         update_cache: yes
 
-    - name: Copy file with owner and permissions
-      ansible.builtin.copy:
-        src: /config/vitastor.conf
+    - name: Template a file to /etc/vitastor/vitastor.conf
+      ansible.builtin.template:
+        src: /home/ubadmin/vitastor/config/vitastor.conf.j2
         dest: /etc/vitastor/vitastor.conf
         owner: root
         group: root
         mode: '0644'
+
 

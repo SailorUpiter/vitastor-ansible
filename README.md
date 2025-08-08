@@ -17,16 +17,13 @@ Ansible playbook for simple install vitastor SDS on Ubuntu 22.04.
 
  ```
  sudo apt install python3-pip
- ```
-
- ```
  sudo python3 -m pip install ansible-core
  ```
- Or
- 
+ Or instal use apt
+
  ```
-sudo apt update
-sudo apt install software-properties-common
-sudo add-apt-repository --yes --update ppa:ansible/ansible
-sudo apt install ansible
-```
+ sudo apt update
+ sudo apt install software-properties-common
+ sudo add-apt-repository --yes --update ppa:ansible/ansible
+ sudo apt install ansible
+ ```
