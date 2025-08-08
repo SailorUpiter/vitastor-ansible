@@ -44,3 +44,15 @@ This network use from connect OSDs. If you need a separate network see oficial d
 In playbook prepare_osd you need listing storage disks in format /dev/sdXXX /dev/sdYYYY
 See more information https://vitastor.io/en/docs/usage/disk.html
 ## Run playbook
+Run playbook to install packages
+```
+ansible-playbook -i /path/to/inventory/inventory/vitastor.ini ./playbook/install_vitastor.yml 
+```
+Run playbook to start mon daemon and ETCD
+```
+ansible-playbook -i /path/to/inventory/inventory/vitastor.ini ./playbook/prepare_mon.yml
+```
+Run playbook to prepare and start OSD
+```
+ansible-playbook -i /path/to/inventory/inventory/vitastor.ini ./playbook/prepare_osd.yml
+```
