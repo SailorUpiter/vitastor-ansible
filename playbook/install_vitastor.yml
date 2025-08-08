@@ -1,6 +1,6 @@
 ---
 - name: Install vitastor
-  hosts: vitastor-mon
+  hosts: vitastor-host
   become: true
   vars_files:
     - /home/ubadmin/vitastor/vars/main

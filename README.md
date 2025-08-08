@@ -43,3 +43,4 @@ Specify the ip addresses for the monitors(ETCD) in the file /var/main and osd ne
 This network use from connect OSDs. If you need a separate network see oficial docs https://vitastor.io/docs/config/network.html#osd_cluster_network
 In playbook prepare_osd you need listing storage disks in format /dev/sdXXX /dev/sdYYYY
 See more information https://vitastor.io/en/docs/usage/disk.html
+## Run playbook
